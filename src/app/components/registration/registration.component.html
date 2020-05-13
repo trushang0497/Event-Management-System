@@ -1,0 +1,128 @@
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" novalidate [formGroup]="registerForm" (ngSubmit)="SubmitData()">
+            <span class="contact100-form-title">
+                Regsitration
+            </span>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">First Name</span>
+                <input class="input100" type="text" name="first_name" placeholder="Enter your first name" required
+                    formControlName="first_name">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.first_name.errors">
+                <span *ngIf="registerForm.controls.first_name.errors?.required">
+                    <p class="text-danger">First name is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Last Name</span>
+                <input class="input100" type="text" name="last_name" placeholder="Enter your last name" required
+                    formControlName="last_name">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.last_name.errors">
+                <span *ngIf="registerForm.controls.last_name.errors?.required">
+                    <p class="text-danger">Last name is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                <span class="label-input100">Email</span>
+                <input class="input100" type="email" name="email_address" placeholder="Enter your email addess" required
+                    formControlName="email_address">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.email_address.errors">
+                <span *ngIf="registerForm.controls.email_address.errors?.required">
+                    <p class="text-danger">Email address is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Password</span>
+                <input class="input100" type="password" name="password" placeholder="Enter your password" required
+                    formControlName="password">
+                <span class=" focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.password.errors">
+                <span *ngIf="registerForm.controls.password.errors?.required">
+                    <p class="text-danger">Password is required</p>
+                </span>
+                <span *ngIf="registerForm.controls.password.errors?.minlength">Miniman Length 5 is Required</span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Contact Number</span>
+                <input class="input100" type="text" name="contact_number" placeholder="Enter your contact number"
+                    required formControlName="contact_number" max="10" min="10">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.contact_number.errors">
+                <span *ngIf="registerForm.controls.contact_number.errors?.required">
+                    <p class="text-danger">Contact number is required</p>
+                </span>
+                <span
+                    *ngIf="registerForm.controls.password.errors?.minlength || registerForm.controls.password.errors?.maxlength">Miniman/Maximum
+                    Length 10 is
+                    Required</span>
+            </div>
+
+            <div class="wrap-input100 input100-select">
+                <span class="label-input100">Gender</span>
+                <div>
+                    <select class="selection-2" name="gender" placeholder="Enter your gender" required
+                        formControlName="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.gender.errors">
+                <span *ngIf="registerForm.controls.gender.errors?.required">
+                    <p class="text-danger">Gender required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Date of birth</span>
+                <input class="input100" type="date" name="date_of_birth" placeholder="Enter your date of birth" required
+                    formControlName="date_of_birth">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && registerForm.controls.date_of_birth.errors">
+                <span *ngIf="registerForm.controls.date_of_birth.errors?.required">
+                    <p class="text-danger">Date of birth is required</p>
+                </span>
+            </div>
+
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active">If you have login then click here !</a>
+
+            <p class="text-danger" *ngIf="errFlag">{{errorMsg}}</p>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit">
+                        <span>
+                            Registration
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>

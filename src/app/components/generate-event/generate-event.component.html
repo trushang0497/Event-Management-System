@@ -1,0 +1,117 @@
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" novalidate [formGroup]="createEventForm" (ngSubmit)="SubmitData()">
+            <span class="contact100-form-title">
+                Create New Event
+            </span>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Title</span>
+                <input class="input100" type="text" name="title" placeholder="Enter your title" required
+                    formControlName="title">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.title.errors">
+                <span *ngIf="createEventForm.controls.title.errors?.required">
+                    <p class="text-danger">Title is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Description</span>
+                <input class="input100" type="text" name="description" placeholder="Enter your description" required
+                    formControlName="description">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.description.errors">
+                <span *ngIf="createEventForm.controls.description.errors?.required">
+                    <p class="text-danger">Description is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Place</span>
+                <input class="input100" type="text" name="place" placeholder="Enter your place" required
+                    formControlName="place">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.place.errors">
+                <span *ngIf="createEventForm.controls.place.errors?.required">
+                    <p class="text-danger">Place is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Max Count</span>
+                <input class="input100" type="text" name="max_count" placeholder="Enter your max count for join"
+                    required formControlName="max_count">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.max_count.errors">
+                <span *ngIf="createEventForm.controls.max_count.errors?.required">
+                    <p class="text-danger">Max Count is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Date</span>
+                <input class="input100" type="date" name="date" placeholder="Enter your date" required
+                    formControlName="date">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.date.errors">
+                <span *ngIf="createEventForm.controls.date.errors?.required">
+                    <p class="text-danger">Date is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Paticipants</span>
+                <input class="input100" type="text" name="paticipants" placeholder="Enter your paticipants" required
+                    formControlName="paticipants">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && createEventForm.controls.paticipants.errors">
+                <span *ngIf="createEventForm.controls.paticipants.errors?.required">
+                    <p class="text-danger">Paticipants is required</p>
+                </span>
+            </div>
+
+            <p class="text-danger" *ngIf="errFlag">{{errorMsg}}</p>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit">
+                        <span>
+                            Generate Event
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit" [routerLink]="['/dashboard']"
+                        routerLinkActive="router-link-active">
+                        <span>
+                            Back
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>

@@ -1,0 +1,85 @@
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" novalidate [formGroup]="joinEventForm">
+            <span class="contact100-form-title">
+                Join Event
+            </span>
+
+            <div class="wrap-input100 input100-select">
+                <span class="label-input100">Select your event</span>
+                <div>
+                    <select class="selection-2" name="event" required formControlName="event">
+                        <option value="">Select Event</option>
+                        <option *ngFor="let i of eventList" [value]="i._id">{{ i.title }}</option>
+                    </select>
+                </div>
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && joinEventForm.controls.event.errors">
+                <span *ngIf="joinEventForm.controls.event.errors?.required">
+                    <p class="text-danger">Select Event is required</p>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+                <span class="label-input100">Date</span>
+                <input class="input100" type="date" name="join_date" placeholder="Enter your date" required
+                    formControlName="join_date">
+                <span class="focus-input100"></span>
+            </div>
+            <div *ngIf="submitted && joinEventForm.controls.join_date.errors">
+                <span *ngIf="joinEventForm.controls.join_date.errors?.required">
+                    <p class="text-danger">Date is required</p>
+                </span>
+            </div>
+
+            <p class="text-danger" *ngIf="errFlag">{{errorMsg}}</p>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit" (click)="SubmitData()">
+                        <span>
+                            Join
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit" (click)="leaveEvent()">
+                        <span>
+                            Leave
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn" type="submit" [routerLink]="['/dashboard']"
+                        routerLinkActive="router-link-active">
+                        <span>
+                            Back
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="dropDownSelect1"></div>
+
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
